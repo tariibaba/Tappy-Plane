@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -38,9 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 255274245
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Grass
-    uniqueID: 936669471
     locked: 0

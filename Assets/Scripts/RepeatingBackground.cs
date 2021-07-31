@@ -26,19 +26,22 @@ public class RepeatingBackground : MonoBehaviour
 
     void Update()
     {
-        foreach (var segment in segments)
+        if (!GameController.Instance.GameEnded.Value)
         {
-            segment.Translate(Vector2.left * Time.deltaTime * speed);
-        }
-        var firstSegment = segmentQueue.Peek();
-        if (leftScreenEdgeX - firstSegment.position.x > spriteWidth / 2)
-        {
-            segmentQueue.Dequeue();
-            firstSegment.Translate(Vector2.right * spriteWidth * segments.Length);
-            var newPos = firstSegment.transform.position;
-            newPos.x = segmentQueue.Last().position.x + spriteWidth;
-            firstSegment.transform.position = newPos;
-            segmentQueue.Enqueue(firstSegment);
+            foreach (var segment in segments)
+            {
+                segment.Translate(Vector2.left * Time.deltaTime * speed);
+            }
+            var firstSegment = segmentQueue.Peek();
+            if (leftScreenEdgeX - firstSegment.position.x > spriteWidth / 2)
+            {
+                segmentQueue.Dequeue();
+                firstSegment.Translate(Vector2.right * spriteWidth * segments.Length);
+                var newPos = firstSegment.transform.position;
+                newPos.x = segmentQueue.Last().position.x + spriteWidth;
+                firstSegment.transform.position = newPos;
+                segmentQueue.Enqueue(firstSegment);
+            }
         }
     }
 }
