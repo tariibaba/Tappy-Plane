@@ -12,12 +12,14 @@ public class GameController : MonoBehaviour
     public ReactiveProperty<bool> GameEnded;
     public ReactiveProperty<bool> GameStarted;
     public static GameController Instance { get; private set; }
+    public ReactiveProperty<int> Score;
 
     private void Awake()
     {
         Instance = this;
         GameEnded = new ReactiveProperty<bool>(false);
         GameStarted = new ReactiveProperty<bool>(false);
+        Score = new ReactiveProperty<int>(0);
     }
 
     // Start is called before the first frame update

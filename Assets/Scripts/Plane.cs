@@ -43,4 +43,9 @@ public class Plane : MonoBehaviour
             GameController.Instance.GameEnded.Value = true;
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        GameController.Instance.Score.Value++;
+    }
 }
