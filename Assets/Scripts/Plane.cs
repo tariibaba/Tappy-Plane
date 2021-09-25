@@ -16,6 +16,7 @@ public class Plane : MonoBehaviour
         GameController.Instance.GameStarted.Where((value) => value).Subscribe((value) =>
         {
             rigidbody2d.isKinematic = false;
+            rigidbody2d.gravityScale = 0.6f;
         }).AddTo(this);
         GameController.Instance.GameEnded.Where((value) => value).Subscribe((value) =>
         {
@@ -41,6 +42,15 @@ public class Plane : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             GameController.Instance.GameEnded.Value = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Star"))
+        {
+            Destroy(collision.gameObject);
+            GameController.Instance.Stars.Value++;
         }
     }
 
