@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject rockUp;
-    public GameObject rockDown;
+    public GameObject firstRock;
     private bool spawningRockUp;
     private Vector2 rockSpawnStartPointPos;
     public ReactiveProperty<bool> GameEnded;
@@ -39,11 +38,9 @@ public class GameController : MonoBehaviour
     {
         while (!GameController.Instance.GameEnded.Value)
         {
-            var rockToSpawn = spawningRockUp ? rockUp : rockDown;
-            spawningRockUp = !spawningRockUp;
-            var newRock = Instantiate(rockToSpawn);
+            var newRock = Instantiate(firstRock);
             newRock.AddComponent<Rock>();
-            var seconds = Random.Range(0, 2f);
+            var seconds = Random.Range(1, 2);
             yield return new WaitForSeconds(seconds);
         }
     }

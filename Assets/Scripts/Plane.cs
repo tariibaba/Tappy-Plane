@@ -46,6 +46,9 @@ public class Plane : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        GameController.Instance.Score.Value++;
+        if (collision.CompareTag("ScoreIncreaseTrigger"))
+        {
+            GameController.Instance.Score.Value++;
+        }
     }
 }
