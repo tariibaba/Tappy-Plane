@@ -16,7 +16,6 @@ public class Plane : MonoBehaviour
         GameController.Instance.GameStarted.Where((value) => value).Subscribe((value) =>
         {
             rigidbody2d.isKinematic = false;
-            rigidbody2d.gravityScale = 0.6f;
         }).AddTo(this);
         GameController.Instance.GameEnded.Where((value) => value).Subscribe((value) =>
         {
@@ -33,7 +32,7 @@ public class Plane : MonoBehaviour
             {
                 GameController.Instance.StartGame();
             }
-            rigidbody2d.AddForce(Vector2.up * force);
+            rigidbody2d.velocity = Vector2.up * force;
         }
     }
 
