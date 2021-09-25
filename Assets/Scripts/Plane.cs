@@ -26,7 +26,7 @@ public class Plane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Space) && !GameController.Instance.GameEnded.Value)
+        if ((Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Space)) && !GameController.Instance.GameEnded.Value)
         {
             if (!GameController.Instance.GameStarted.Value)
             {
