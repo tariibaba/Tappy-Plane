@@ -24,7 +24,6 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var screenRightX = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.width)).x;
         spawningRockUp = true;
     }
 
@@ -36,7 +35,7 @@ public class GameController : MonoBehaviour
 
     private IEnumerator StartSpawningRocks()
     {
-        while (!GameController.Instance.GameEnded.Value)
+        while (!GameEnded.Value)
         {
             var newRock = Instantiate(firstRock);
             newRock.AddComponent<Rock>();
