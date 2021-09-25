@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour
         {
             var newRock = Instantiate(firstRock);
             newRock.AddComponent<Rock>();
+            newRock.transform.Translate(new Vector3(0, Random.Range(-1.5f, 1.5f)));
             var seconds = Random.Range(1, 2);
             yield return new WaitForSeconds(seconds);
         }
