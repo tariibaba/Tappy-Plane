@@ -5,7 +5,6 @@ using System.Linq;
 
 public class RepeatingBackground : MonoBehaviour
 {
-    // Start is called before the first frame update
     float leftScreenEdgeX;
     public float speed;
     private float spriteWidth;
@@ -14,7 +13,7 @@ public class RepeatingBackground : MonoBehaviour
 
     void Start()
     {
-        leftScreenEdgeX = Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x;
+        leftScreenEdgeX = Camera.main.ScreenToWorldPoint(Vector2.zero).x;
         var size = segments[0].GetComponent<SpriteRenderer>().size;
         spriteWidth = size.x *= segments[0].transform.lossyScale.x;
         segmentQueue = new Queue<Transform>();

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 
-public class ScoreCount : MonoBehaviour
+public class Score : MonoBehaviour
 {
     private int score;
     public Sprite[] digitImageSprites;

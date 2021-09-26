@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject firstRock;
-    private bool spawningRockUp;
-    private Vector2 rockSpawnStartPointPos;
+    public GameObject firstRockPair;
     public ReactiveProperty<bool> GameEnded;
     public ReactiveProperty<bool> GameStarted;
     public static GameController Instance { get; private set; }
@@ -26,12 +24,6 @@ public class GameController : MonoBehaviour
         Stars = new ReactiveProperty<int>(0);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        spawningRockUp = true;
-    }
-
     public void StartGame()
     {
         GameStarted.Value = true;
@@ -43,7 +35,7 @@ public class GameController : MonoBehaviour
     {
         while (!GameEnded.Value)
         {
-            var newRock = Instantiate(firstRock);
+            var newRock = Instantiate(firstRockPair);
             newRock.AddComponent<Rock>();
             newRock.transform.Translate(new Vector3(0, Random.Range(-1.5f, 1.5f)));
             var seconds = Random.Range(1f, 2f);

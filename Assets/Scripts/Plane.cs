@@ -7,7 +7,7 @@ public class Plane : MonoBehaviour
 {
     private Rigidbody2D rigidbody2d;
     private Animator animator;
-    public float force = 15f;
+    public float initialVelocity = 5f;
 
     void Start()
     {
@@ -23,7 +23,6 @@ public class Plane : MonoBehaviour
         }).AddTo(this);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if ((Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Space)) && !GameController.Instance.GameEnded.Value)
@@ -32,7 +31,7 @@ public class Plane : MonoBehaviour
             {
                 GameController.Instance.StartGame();
             }
-            rigidbody2d.velocity = Vector2.up * force;
+            rigidbody2d.velocity = Vector2.up * initialVelocity;
         }
     }
 
